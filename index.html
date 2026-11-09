@@ -35,6 +35,13 @@
   h1{font-size:23px;line-height:1.32;font-weight:800;margin:6px 0 8px;letter-spacing:-.02em}
   .lead{font-size:14px;line-height:1.55;color:var(--sub)}
 
+  .info{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 10px;display:flex;flex-direction:column}
+  .stat small{display:block;font-size:12px;color:var(--sub);margin-bottom:1px}
+  .stat strong{font-size:17px;font-weight:800;color:var(--primary);letter-spacing:-.01em}
+  .target{grid-column:1/-1;font-size:13px;color:var(--ink);line-height:1.45}
+  .target b{display:inline-block;margin-right:6px;padding:1px 7px;border-radius:5px;background:var(--soft);
+        color:var(--primary);font-size:12px;font-weight:700}
   /* 진행 절차 카드 */
   .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 0 14px;margin-top:16px}
   .flow-head{display:flex;justify-content:space-between;align-items:baseline;padding:0 16px;margin-bottom:10px}
@@ -107,18 +114,46 @@
     .txt b{font-size:17px}
     .txt p{font-size:14.5px}
   }
+  @media (max-height:860px){
+    .wrap{padding-top:calc(14px + env(safe-area-inset-top))}
+    .stat{flex-direction:row;align-items:baseline;justify-content:space-between;padding:6px 10px}
+    .stat small{font-size:11.5px;margin:0}
+    .stat strong{font-size:16px}
+    .target{font-size:12.5px}
+    .flow-head{margin-bottom:6px}
+    .note{font-size:12.5px;border-top:0;padding-top:0;margin-top:6px}
+    .warn{font-size:12.5px;padding:6px 9px;margin-top:5px}
+    .dots{margin-top:7px}
+    .disclaimer{font-size:11px;margin-top:8px}
+    .card{margin-top:10px;padding:12px 0}
+    .flow-head{margin-bottom:8px}
+    .actions{padding-top:12px}
+  }
   @media (max-height:779px){
-    .note{margin-top:8px;padding-top:8px}
-    .warn{margin-top:6px;padding:7px 10px}
-    .disclaimer{margin-top:10px}
+    h1{font-size:21px;margin:4px 0 6px}
+    .lead{font-size:13px;line-height:1.5}
+    .pic{width:66px}
+    .flow-item{padding:8px 12px}
+    .txt p{font-size:13px}
+    .btn{min-height:48px;font-size:16px}
+    .actions{gap:8px}
+    .info{margin-top:10px;gap:6px}
+    .stat{padding:7px 11px}
+    .stat strong{font-size:16px}
+    .card{margin-top:12px}
   }
   /* 작은 화면(아이폰 SE 등)에서 한 화면에 맞추기 */
   @media (max-height:700px){
+    .eyebrow{font-size:12px}
+    h1{font-size:19px;letter-spacing:-.04em}
+    h1 br{display:none}
+    .lead{font-size:12.5px}
+    .disclaimer{font-size:10.5px;line-height:1.45}
     .wrap{padding-top:calc(12px + env(safe-area-inset-top))}
     h1{font-size:21px;margin:4px 0 6px}
     .lead{font-size:13px}
     .card{margin-top:12px;padding:12px 0}
-    .pic{width:82px}
+    .pic{width:64px}
     .btn{min-height:50px;font-size:16px}
     .actions{padding-top:12px;gap:8px}
   }
@@ -128,8 +163,11 @@
 <main class="wrap">
   <header>
     <div class="eyebrow">교보생명 신용대출 간편조회</div>
-    <h1>내 대출 한도와 금리,<br>3분이면 확인해요</h1>
+    <h1>내 대출 한도와 금리, <br>3분이면 확인해요</h1>
     <p class="lead">교보생명 신용대출 간편조회 페이지로 바로 이동하거나, 필요한 분께 링크를 공유하세요.</p>
+    <div class="info" aria-label="상품 안내">
+      <p class="target"><b>대상</b>소관고객 중 만 25세~65세, 보험 7회차 이상</p>
+    </div>
   </header>
 
   <section class="card" aria-label="진행 절차">
@@ -187,14 +225,14 @@
             <rect x="36" y="9" width="24" height="4" rx="2" fill="#dde3e9"/>
             <rect x="14" y="20" width="68" height="34" rx="7" fill="#eef3fb"/>
             <text x="20" y="31" font-size="6.5" fill="#5b6570" font-family="Noto Sans KR, sans-serif">대출 가능 한도</text>
-            <text x="20" y="46" font-size="10.5" font-weight="800" fill="#1f6feb" font-family="Noto Sans KR, sans-serif">000만원</text>
+            <text x="20" y="46" font-size="10.5" font-weight="800" fill="#1f6feb" font-family="Noto Sans KR, sans-serif">○○○만원</text>
             <rect x="14" y="58" width="68" height="18" rx="6" fill="#f4f6f8"/>
             <text x="20" y="70" font-size="6.5" fill="#5b6570" font-family="Noto Sans KR, sans-serif">금리</text>
-            <text x="76" y="70.5" text-anchor="end" font-size="8.5" font-weight="800" fill="#15191e" font-family="Noto Sans KR, sans-serif">연 0.0%</text>
+            <text x="76" y="70.5" text-anchor="end" font-size="8.5" font-weight="800" fill="#15191e" font-family="Noto Sans KR, sans-serif">연 ○.○%</text>
             <rect x="10" y="82" width="76" height="58" rx="8" fill="#f2f7ff" stroke="#1f6feb" stroke-width="1.6" stroke-dasharray="4 3"/>
             <text x="16" y="95" font-size="7.5" font-weight="800" fill="#1f6feb" font-family="Noto Sans KR, sans-serif">추천 FP 등록</text>
             <rect x="16" y="100" width="64" height="14" rx="4" fill="#fff" stroke="#c9d6ea"/>
-            <text x="20" y="110" font-size="6.5" fill="#8a939c" font-family="Noto Sans KR, sans-serif">FP 코드</text>
+            <text x="20" y="110" font-size="6.5" fill="#8a939c" font-family="Noto Sans KR, sans-serif">FP 이름 또는 코드</text>
             <rect x="16" y="119" width="64" height="15" rx="5" fill="#1f6feb"/>
             <text x="48" y="129.5" text-anchor="middle" font-size="7.5" font-weight="700" fill="#fff" font-family="Noto Sans KR, sans-serif">등록하기</text>
           </svg>
@@ -202,13 +240,13 @@
         <div class="txt">
           <span class="num">3</span>
           <b>한도·금리 확인</b>
-          <p>결과 화면 아래 <b style="display:inline;font-size:inherit;color:var(--primary)">추천 FP 등록</b> 클릭해주세요.</p>
+          <p>결과 화면 아래 <b style="display:inline;font-size:inherit;color:var(--primary)">추천 FP 등록</b>란에 담당 FP를 입력해 주세요.</p>
           <span class="fp" id="fpBadge" hidden></span>
         </div>
       </li>
     </ol>
     <div class="dots" id="dots" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
-    <p class="note">단순 한도 조회만으로는 신용점수에 영향이 없습니다.</p>
+    <p class="note">상담용 한도 조회만으로는 신용점수에 영향이 없습니다.</p>
     <p class="warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 7.5v5.5M12 16.5v.01"/></svg><span>조회하면 신용정보를 조회했다는 안내문자가 나갈 수 있어요. <b>꼭 동의 후 진행해주세요.</b></span></p>
   </section>
 
@@ -223,7 +261,7 @@
     </button>
   </div>
 
-  <p class="disclaimer">이 페이지는 바로가기 안내 페이지이며,<br>버튼을 누르면 교보생명 공식 홈페이지(www.kyobo.com)로 이동합니다.</p>
+  <p class="disclaimer">이 페이지는 바로가기 안내 페이지이며,<br>버튼을 누르면 교보생명 공식 홈페이지(kyobo.com)로 이동합니다.</p>
 </main>
 
 <!-- 공유 시트: 문자 / 카카오톡 -->
