@@ -26,7 +26,7 @@
   }
   .wrap{
     max-width:440px; margin:0 auto; min-height:100vh; min-height:100dvh;
-    display:flex; flex-direction:column;
+    display:flex; flex-direction:column; justify-content:center;
     padding:calc(18px + env(safe-area-inset-top)) 18px calc(14px + env(safe-area-inset-bottom));
   }
 
@@ -43,9 +43,9 @@
   .flow{list-style:none;display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
         padding:0 16px;scroll-padding:0 16px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .flow::-webkit-scrollbar{display:none}
-  .flow-item{flex:0 0 86%;scroll-snap-align:start;display:flex;align-items:center;gap:14px;
-        padding:12px 14px;border-radius:14px;background:#f8fafc;border:1px solid #edf0f3}
-  .pic{flex:none;width:62px}
+  .flow-item{flex:0 0 86%;scroll-snap-align:start;display:flex;align-items:center;gap:12px;
+        padding:10px 12px;border-radius:14px;background:#f8fafc;border:1px solid #edf0f3}
+  .pic{flex:none;width:84px}
   .pic svg{display:block;width:100%;height:auto}
   .txt{flex:1;min-width:0}
   .num{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;
@@ -59,8 +59,12 @@
   .dots span.on{width:18px;background:var(--primary)}
   .note{margin:10px 16px 0;padding-top:10px;border-top:1px dashed var(--line);font-size:13px;color:var(--sub);line-height:1.5}
 
+  .warn{display:flex;gap:7px;align-items:flex-start;margin:8px 16px 0;padding:9px 11px;border-radius:10px;
+        background:#fff6e5;color:#8a5300;font-size:13px;line-height:1.5}
+  .warn svg{flex:none;width:16px;height:16px;margin-top:2px}
+  .warn b{font-weight:700}
   /* 버튼 */
-  .actions{margin-top:auto;padding-top:16px;display:grid;gap:10px}
+  .actions{padding-top:18px;display:grid;gap:10px}
   .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:54px;
        border-radius:14px;font:inherit;font-size:17px;font-weight:700;text-decoration:none;cursor:pointer;
        border:1px solid transparent;transition:transform .08s ease, background .15s ease}
@@ -96,13 +100,25 @@
          opacity:0;pointer-events:none;transition:all .2s;text-align:center}
   .toast.show{opacity:1;transform:translate(-50%,0)}
 
+  /* 키가 큰 화면: 그림을 더 크게 */
+  @media (min-height:780px){
+    .pic{width:108px}
+    .flow-item{padding:14px}
+    .txt b{font-size:17px}
+    .txt p{font-size:14.5px}
+  }
+  @media (max-height:779px){
+    .note{margin-top:8px;padding-top:8px}
+    .warn{margin-top:6px;padding:7px 10px}
+    .disclaimer{margin-top:10px}
+  }
   /* 작은 화면(아이폰 SE 등)에서 한 화면에 맞추기 */
   @media (max-height:700px){
     .wrap{padding-top:calc(12px + env(safe-area-inset-top))}
     h1{font-size:21px;margin:4px 0 6px}
     .lead{font-size:13px}
     .card{margin-top:12px;padding:12px 0}
-    .pic{width:54px}
+    .pic{width:82px}
     .btn{min-height:50px;font-size:16px}
     .actions{padding-top:12px;gap:8px}
   }
@@ -171,14 +187,14 @@
             <rect x="36" y="9" width="24" height="4" rx="2" fill="#dde3e9"/>
             <rect x="14" y="20" width="68" height="34" rx="7" fill="#eef3fb"/>
             <text x="20" y="31" font-size="6.5" fill="#5b6570" font-family="Noto Sans KR, sans-serif">대출 가능 한도</text>
-            <text x="20" y="46" font-size="10.5" font-weight="800" fill="#1f6feb" font-family="Noto Sans KR, sans-serif">000만원</text>
+            <text x="20" y="46" font-size="10.5" font-weight="800" fill="#1f6feb" font-family="Noto Sans KR, sans-serif">○○○만원</text>
             <rect x="14" y="58" width="68" height="18" rx="6" fill="#f4f6f8"/>
             <text x="20" y="70" font-size="6.5" fill="#5b6570" font-family="Noto Sans KR, sans-serif">금리</text>
-            <text x="76" y="70.5" text-anchor="end" font-size="8.5" font-weight="800" fill="#15191e" font-family="Noto Sans KR, sans-serif">연 0.0%</text>
+            <text x="76" y="70.5" text-anchor="end" font-size="8.5" font-weight="800" fill="#15191e" font-family="Noto Sans KR, sans-serif">연 ○.○%</text>
             <rect x="10" y="82" width="76" height="58" rx="8" fill="#f2f7ff" stroke="#1f6feb" stroke-width="1.6" stroke-dasharray="4 3"/>
-            <text x="16" y="95" font-size="7.5" font-weight="800" fill="#1f6feb" font-family="Noto Sans KR, sans-serif">추천 FP입력</text>
+            <text x="16" y="95" font-size="7.5" font-weight="800" fill="#1f6feb" font-family="Noto Sans KR, sans-serif">추천 FP 등록</text>
             <rect x="16" y="100" width="64" height="14" rx="4" fill="#fff" stroke="#c9d6ea"/>
-            <text x="20" y="110" font-size="6.5" fill="#8a939c" font-family="Noto Sans KR, sans-serif">FP코드</text>
+            <text x="20" y="110" font-size="6.5" fill="#8a939c" font-family="Noto Sans KR, sans-serif">FP 이름 또는 코드</text>
             <rect x="16" y="119" width="64" height="15" rx="5" fill="#1f6feb"/>
             <text x="48" y="129.5" text-anchor="middle" font-size="7.5" font-weight="700" fill="#fff" font-family="Noto Sans KR, sans-serif">등록하기</text>
           </svg>
@@ -186,13 +202,14 @@
         <div class="txt">
           <span class="num">3</span>
           <b>한도·금리 확인</b>
-          <p>결과 화면 아래 <b style="display:inline;font-size:inherit;color:var(--primary)">추천 FP 등록</b> 클릭해주세요.</p>
+          <p>결과 화면 아래 <b style="display:inline;font-size:inherit;color:var(--primary)">추천 FP 등록</b>란에 담당 FP를 입력해 주세요.</p>
           <span class="fp" id="fpBadge" hidden></span>
         </div>
       </li>
     </ol>
     <div class="dots" id="dots" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
-    <p class="note">단순 한도 조회만으로는 신용점수에 영향이 없습니다.</p>
+    <p class="note">상담용 한도 조회만으로는 신용점수에 영향이 없습니다.</p>
+    <p class="warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 7.5v5.5M12 16.5v.01"/></svg><span>조회하면 신용정보를 조회했다는 안내문자가 나갈 수 있어요. <b>꼭 동의 후 진행해주세요.</b></span></p>
   </section>
 
   <div class="actions">
