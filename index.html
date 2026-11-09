@@ -3,109 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>신용대출 간편조회 바로가기</title>
-<meta name="description" content="교보생명 신용대출 간편조회 페이지 바로가기 및 링크 공유">
+<title>교보생명 신용대출 간편조회 바로가기</title>
+<meta name="description" content="교보생명 신용대출 간편조회 바로가기 · 휴대폰 본인확인 후 한도와 금리를 조회하세요.">
+<meta property="og:title" content="교보생명 신용대출 간편조회 바로가기">
+<meta property="og:description" content="내 대출 한도와 금리, 3분이면 확인해요">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#f4f6f8; --card:#ffffff; --ink:#15191e; --sub:#5b6570; --line:#e3e7eb;
-    --primary:#1f6feb; --primary-ink:#ffffff; --primary-press:#1858c0;
-    --soft:#eef3fb; --ok:#127a46;
+    --primary:#1f6feb; --primary-press:#1858c0; --soft:#eef3fb;
+    --kakao:#fee500; --kakao-ink:#191600;
   }
   *{box-sizing:border-box;margin:0;padding:0}
+  [hidden]{display:none!important}
   html,body{height:100%}
   body{
     font-family:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
     background:var(--bg); color:var(--ink);
     -webkit-font-smoothing:antialiased; word-break:keep-all;
-    padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   }
-  .wrap{max-width:440px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding:28px 20px 24px}
-  .eyebrow{font-size:14px;font-weight:500;color:var(--primary);letter-spacing:.02em}
-  h1{font-size:28px;line-height:1.35;font-weight:800;margin:8px 0 10px;letter-spacing:-.02em}
-  .lead{font-size:16px;line-height:1.6;color:var(--sub)}
+  .wrap{
+    max-width:440px; margin:0 auto; min-height:100vh; min-height:100dvh;
+    display:flex; flex-direction:column;
+    padding:calc(18px + env(safe-area-inset-top)) 18px calc(14px + env(safe-area-inset-bottom));
+  }
 
-  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 20px;margin-top:24px}
-  .card h2{font-size:15px;font-weight:700;margin-bottom:14px}
-  .steps{list-style:none;display:grid;gap:14px}
-  .steps li{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.5}
-  .num{flex:none;width:28px;height:28px;border-radius:50%;background:var(--soft);color:var(--primary);
-       font-weight:700;font-size:14px;display:grid;place-items:center;margin-top:-1px}
-  .card.flow-card{padding:22px 0 18px}
-  .flow-card h2{padding:0 20px}
-  .flow-head{display:flex;justify-content:space-between;align-items:baseline;padding:0 20px}
-  .flow-head small{font-size:13px;color:#8a939c}
-  .flow{list-style:none;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
-        padding:0 20px 4px;scroll-padding:0 20px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  /* 상단 */
+  .eyebrow{font-size:13px;font-weight:700;color:var(--primary)}
+  h1{font-size:23px;line-height:1.32;font-weight:800;margin:6px 0 8px;letter-spacing:-.02em}
+  .lead{font-size:14px;line-height:1.55;color:var(--sub)}
+
+  /* 진행 절차 카드 */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 0 14px;margin-top:16px}
+  .flow-head{display:flex;justify-content:space-between;align-items:baseline;padding:0 16px;margin-bottom:10px}
+  .flow-head h2{font-size:15px;font-weight:700}
+  .flow-head small{font-size:12px;color:#8a939c}
+  .flow{list-style:none;display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
+        padding:0 16px;scroll-padding:0 16px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
   .flow::-webkit-scrollbar{display:none}
-  .flow-item{flex:0 0 76%;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;
-        text-align:center;padding:18px 16px;border-radius:16px;background:#f8fafc;border:1px solid #edf0f3}
-  .pic{width:110px}
+  .flow-item{flex:0 0 86%;scroll-snap-align:start;display:flex;align-items:center;gap:14px;
+        padding:12px 14px;border-radius:14px;background:#f8fafc;border:1px solid #edf0f3}
+  .pic{flex:none;width:62px}
   .pic svg{display:block;width:100%;height:auto}
-  .txt{margin-top:14px;display:flex;flex-direction:column;align-items:center}
-  .txt .num{width:26px;height:26px;font-size:13px;margin:0 0 8px}
-  .txt b{display:block;font-size:17px;font-weight:700;margin-bottom:4px}
-  .txt p{font-size:14.5px;line-height:1.5;color:var(--sub)}
-  .dots{display:flex;justify-content:center;gap:6px;margin-top:14px}
-  .dots span{width:7px;height:7px;border-radius:4px;background:#d3d9df;transition:all .2s}
-  .dots span.on{width:20px;background:var(--primary)}
-  .flow-card .note{margin:16px 20px 0}
-  .note{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-size:14px;color:var(--sub);line-height:1.55}
+  .txt{flex:1;min-width:0}
+  .num{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;
+       background:var(--soft);color:var(--primary);font-weight:700;font-size:12px;margin-bottom:5px}
+  .txt b{display:block;font-size:16px;font-weight:700;margin-bottom:3px}
+  .txt p{font-size:13.5px;line-height:1.5;color:var(--sub)}
+  .txt .fp{display:inline-block;margin-top:6px;padding:3px 8px;border-radius:6px;background:#e8f0fe;
+       color:var(--primary);font-size:12.5px;font-weight:700}
+  .dots{display:flex;justify-content:center;gap:5px;margin-top:10px}
+  .dots span{width:6px;height:6px;border-radius:3px;background:#d3d9df;transition:all .2s}
+  .dots span.on{width:18px;background:var(--primary)}
+  .note{margin:10px 16px 0;padding-top:10px;border-top:1px dashed var(--line);font-size:13px;color:var(--sub);line-height:1.5}
 
-  .actions{margin-top:auto;padding-top:28px;display:grid;gap:12px}
-  .btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:58px;
-       border-radius:16px;font:inherit;font-size:18px;font-weight:700;text-decoration:none;cursor:pointer;
+  /* 버튼 */
+  .actions{margin-top:auto;padding-top:16px;display:grid;gap:10px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:54px;
+       border-radius:14px;font:inherit;font-size:17px;font-weight:700;text-decoration:none;cursor:pointer;
        border:1px solid transparent;transition:transform .08s ease, background .15s ease}
   .btn:active{transform:scale(.985)}
-  .btn svg{width:22px;height:22px;flex:none}
-  .btn-primary{background:var(--primary);color:var(--primary-ink)}
+  .btn svg{width:20px;height:20px;flex:none}
+  .btn-primary{background:var(--primary);color:#fff}
   .btn-primary:active{background:var(--primary-press)}
   .btn-secondary{background:var(--card);color:var(--ink);border-color:var(--line)}
   .btn:focus-visible{outline:3px solid #9cc1ff;outline-offset:2px}
-
-  .disclaimer{margin-top:18px;font-size:12.5px;color:#8a939c;line-height:1.55;text-align:center}
+  .disclaimer{margin-top:12px;font-size:12px;color:#8a939c;line-height:1.5;text-align:center}
 
   /* 공유 시트 */
   .sheet-bg{position:fixed;inset:0;background:rgba(15,20,25,.45);opacity:0;pointer-events:none;transition:opacity .2s}
   .sheet{position:fixed;left:0;right:0;bottom:0;max-width:440px;margin:0 auto;background:var(--card);
-         border-radius:22px 22px 0 0;padding:12px 20px calc(24px + env(safe-area-inset-bottom));
+         border-radius:22px 22px 0 0;padding:12px 18px calc(18px + env(safe-area-inset-bottom));
          transform:translateY(105%);transition:transform .25s ease}
   .open .sheet-bg{opacity:1;pointer-events:auto}
   .open .sheet{transform:none}
-  .grab{width:40px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 16px}
-  .sheet h3{font-size:18px;font-weight:700;margin-bottom:6px}
-  .sheet p{font-size:14px;color:var(--sub);margin-bottom:16px}
-  .url-row{display:flex;gap:8px;margin-bottom:12px}
-  .url-row input{flex:1;min-width:0;height:52px;border:1px solid var(--line);border-radius:12px;padding:0 12px;
-       font:inherit;font-size:14px;color:var(--ink);background:#fafbfc}
-  .url-row button{flex:none;height:52px;padding:0 18px;border-radius:12px;border:0;background:var(--ink);color:#fff;
-       font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+  .grab{width:40px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 14px}
+  .sheet h3{font-size:18px;font-weight:700;margin-bottom:14px}
   .share-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .share-grid a,.share-grid button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;
-       border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;
-       font:inherit;font-size:15px;font-weight:500;cursor:pointer}
-  .close{width:100%;margin-top:12px;min-height:50px;border:0;background:transparent;color:var(--sub);font:inherit;font-size:15px;cursor:pointer}
+  .share-opt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+       min-height:96px;border-radius:16px;border:1px solid var(--line);background:var(--card);
+       color:var(--ink);text-decoration:none;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+  .share-opt .ico{width:44px;height:44px;border-radius:50%;display:grid;place-items:center}
+  .share-opt .ico svg{width:24px;height:24px}
+  .ico-sms{background:#34c759;color:#fff}
+  .ico-kakao{background:var(--kakao);color:var(--kakao-ink)}
+  .close{width:100%;margin-top:10px;min-height:48px;border:0;background:transparent;color:var(--sub);font:inherit;font-size:15px;cursor:pointer}
 
-  .toast{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom));transform:translate(-50%,20px);
-         background:#15191e;color:#fff;font-size:15px;padding:12px 18px;border-radius:999px;opacity:0;
-         pointer-events:none;transition:all .2s;white-space:nowrap}
+  .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);
+         max-width:calc(100% - 32px);background:#15191e;color:#fff;font-size:14px;padding:12px 18px;border-radius:14px;
+         opacity:0;pointer-events:none;transition:all .2s;text-align:center}
   .toast.show{opacity:1;transform:translate(-50%,0)}
+
+  /* 작은 화면(아이폰 SE 등)에서 한 화면에 맞추기 */
+  @media (max-height:700px){
+    .wrap{padding-top:calc(12px + env(safe-area-inset-top))}
+    h1{font-size:21px;margin:4px 0 6px}
+    .lead{font-size:13px}
+    .card{margin-top:12px;padding:12px 0}
+    .pic{width:54px}
+    .btn{min-height:50px;font-size:16px}
+    .actions{padding-top:12px;gap:8px}
+  }
 </style>
 </head>
 <body>
 <main class="wrap">
-  <div>
+  <header>
     <div class="eyebrow">교보생명 신용대출 간편조회</div>
     <h1>내 대출 한도와 금리,<br>3분이면 확인해요</h1>
     <p class="lead">교보생명 신용대출 간편조회 페이지로 바로 이동하거나, 필요한 분께 링크를 공유하세요.</p>
-  </div>
+  </header>
 
-  <section class="card flow-card" aria-label="이용 방법">
-    <div class="flow-head"><h2 style="padding:0">이렇게 진행돼요</h2><small>옆으로 넘겨보세요 →</small></div>
-    <div style="height:14px"></div>
-    <ol class="flow">
+  <section class="card" aria-label="진행 절차">
+    <div class="flow-head"><h2>이렇게 진행돼요</h2><small>옆으로 넘겨보세요 →</small></div>
+    <ol class="flow" id="flow">
       <li class="flow-item">
         <div class="pic" aria-hidden="true">
           <svg viewBox="0 0 96 150">
@@ -148,7 +161,7 @@
         <div class="txt">
           <span class="num">2</span>
           <b>휴대폰 본인확인</b>
-          <p>이름과 휴대폰 번호를 입력하고 문자로 받은 인증번호를 넣어요.</p>
+          <p>이름과 휴대폰 번호를 입력하고 받은 인증번호를 넣어요.</p>
         </div>
       </li>
       <li class="flow-item">
@@ -156,21 +169,25 @@
           <svg viewBox="0 0 96 150">
             <rect x="4" y="2" width="88" height="146" rx="14" fill="#fff" stroke="#c9d1da" stroke-width="2"/>
             <rect x="36" y="9" width="24" height="4" rx="2" fill="#dde3e9"/>
-            <rect x="14" y="26" width="40" height="7" rx="3.5" fill="#cfd8e3"/>
-            <rect x="14" y="42" width="68" height="40" rx="8" fill="#eef3fb"/>
-            <text x="22" y="56" font-size="7" fill="#5b6570" font-family="Noto Sans KR, sans-serif">대출 가능 한도</text>
-            <text x="22" y="72" font-size="11" font-weight="800" fill="#1f6feb" font-family="Noto Sans KR, sans-serif">○○○만원</text>
-            <rect x="14" y="88" width="68" height="28" rx="8" fill="#f4f6f8"/>
-            <text x="22" y="105" font-size="7" fill="#5b6570" font-family="Noto Sans KR, sans-serif">금리</text>
-            <text x="74" y="105.5" text-anchor="end" font-size="9" font-weight="800" fill="#15191e" font-family="Noto Sans KR, sans-serif">연 ○.○%</text>
-            <rect x="14" y="124" width="68" height="14" rx="5" fill="#dfe8f7"/>
-            <rect x="14" y="124" width="44" height="14" rx="5" fill="#1f6feb" opacity=".35"/>
+            <rect x="14" y="20" width="68" height="34" rx="7" fill="#eef3fb"/>
+            <text x="20" y="31" font-size="6.5" fill="#5b6570" font-family="Noto Sans KR, sans-serif">대출 가능 한도</text>
+            <text x="20" y="46" font-size="10.5" font-weight="800" fill="#1f6feb" font-family="Noto Sans KR, sans-serif">○○○만원</text>
+            <rect x="14" y="58" width="68" height="18" rx="6" fill="#f4f6f8"/>
+            <text x="20" y="70" font-size="6.5" fill="#5b6570" font-family="Noto Sans KR, sans-serif">금리</text>
+            <text x="76" y="70.5" text-anchor="end" font-size="8.5" font-weight="800" fill="#15191e" font-family="Noto Sans KR, sans-serif">연 ○.○%</text>
+            <rect x="10" y="82" width="76" height="58" rx="8" fill="#f2f7ff" stroke="#1f6feb" stroke-width="1.6" stroke-dasharray="4 3"/>
+            <text x="16" y="95" font-size="7.5" font-weight="800" fill="#1f6feb" font-family="Noto Sans KR, sans-serif">추천 FP 등록</text>
+            <rect x="16" y="100" width="64" height="14" rx="4" fill="#fff" stroke="#c9d6ea"/>
+            <text x="20" y="110" font-size="6.5" fill="#8a939c" font-family="Noto Sans KR, sans-serif">FP 이름 또는 코드</text>
+            <rect x="16" y="119" width="64" height="15" rx="5" fill="#1f6feb"/>
+            <text x="48" y="129.5" text-anchor="middle" font-size="7.5" font-weight="700" fill="#fff" font-family="Noto Sans KR, sans-serif">등록하기</text>
           </svg>
         </div>
         <div class="txt">
           <span class="num">3</span>
           <b>한도·금리 확인</b>
-          <p>약 3분이면 나에게 맞는 대출 가능 금액과 금리가 나와요.</p>
+          <p>결과 화면 아래 <b style="display:inline;font-size:inherit;color:var(--primary)">추천 FP 등록</b>란에 담당 FP를 입력해 주세요.</p>
+          <span class="fp" id="fpBadge" hidden></span>
         </div>
       </li>
     </ol>
@@ -179,7 +196,7 @@
   </section>
 
   <div class="actions">
-    <a class="btn btn-primary" id="goBtn" href="https://www.kyobo.com/dgt/web/loan/credit/credit-loan-step1" target="_blank" rel="noopener">
+    <a class="btn btn-primary" href="https://www.kyobo.com/dgt/web/loan/credit/credit-loan-step1" target="_blank" rel="noopener">
       조회하러 가기
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
@@ -192,19 +209,21 @@
   <p class="disclaimer">이 페이지는 바로가기 안내 페이지이며,<br>버튼을 누르면 교보생명 공식 홈페이지(kyobo.com)로 이동합니다.</p>
 </main>
 
+<!-- 공유 시트: 문자 / 카카오톡 -->
 <div id="sheetRoot" aria-hidden="true">
   <div class="sheet-bg" id="sheetBg"></div>
   <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
     <div class="grab"></div>
     <h3 id="sheetTitle">링크 공유하기</h3>
-    <p>아래 링크를 복사해 메신저나 문자로 보내세요.</p>
-    <div class="url-row">
-      <input id="urlField" type="text" readonly aria-label="공유할 링크">
-      <button id="copyBtn" type="button">복사</button>
-    </div>
     <div class="share-grid">
-      <a id="smsLink" href="#">💬 문자로 보내기</a>
-      <button id="nativeBtn" type="button">📤 다른 앱으로</button>
+      <a class="share-opt" id="smsLink" href="#">
+        <span class="ico ico-sms"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.4 4.7 3.7 6.2L5 21l4.2-2.4c.9.2 1.8.3 2.8.3 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg></span>
+        문자
+      </a>
+      <button class="share-opt" id="kakaoBtn" type="button">
+        <span class="ico ico-kakao"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3.5c-5.2 0-9.5 3.3-9.5 7.4 0 2.6 1.7 4.9 4.4 6.2l-1 3.6c-.1.3.3.6.6.4l4.3-2.8c.4 0 .8.1 1.2.1 5.2 0 9.5-3.3 9.5-7.4S17.2 3.5 12 3.5z"/></svg></span>
+        카카오톡
+      </button>
     </div>
     <button class="close" id="closeBtn" type="button">닫기</button>
   </div>
@@ -212,78 +231,104 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<!-- 카카오 JavaScript SDK (카카오톡 공유용) -->
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.8.1/kakao.min.js" crossorigin="anonymous"></script>
 <script>
 (function(){
-  var TARGET_URL = "https://www.kyobo.com/dgt/web/loan/credit/credit-loan-step1";
+  /* ===== 여기만 수정하세요 ===== */
+  var KAKAO_JS_KEY = "";           // 카카오 디벨로퍼스 JavaScript 키 (비워두면 링크 복사로 대체)
+  var FP_NAME = "";                // 추천 FP 이름 (예: "홍길동") — 비워두면 표시 안 함
+  var FP_CODE = "";                // 추천 FP 코드 (선택)
+  var SHARE_URL = location.href.split("#")[0];  // 공유할 주소: 이 안내 페이지
   var SHARE_TITLE = "교보생명 신용대출 간편조회";
-  var SHARE_TEXT = "휴대폰 본인확인으로 대출 한도와 금리를 간편하게 조회해 보세요.";
+  var SHARE_TEXT = "내 대출 한도와 금리, 3분이면 확인해요.";
+  /* ============================ */
 
   var root = document.getElementById("sheetRoot");
-  var field = document.getElementById("urlField");
   var toastEl = document.getElementById("toast");
   var toastTimer;
-
-  field.value = TARGET_URL;
-  document.getElementById("smsLink").href =
-    "sms:?&body=" + encodeURIComponent(SHARE_TITLE + "\n" + TARGET_URL);
 
   function toast(msg){
     toastEl.textContent = msg;
     toastEl.classList.add("show");
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 2000);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 2600);
   }
   function openSheet(){ root.classList.add("open"); root.setAttribute("aria-hidden","false"); }
   function closeSheet(){ root.classList.remove("open"); root.setAttribute("aria-hidden","true"); }
 
-  function copyLink(){
+  // 추천 FP 표시
+  if (FP_NAME) {
+    var badge = document.getElementById("fpBadge");
+    badge.textContent = "추천 FP: " + FP_NAME + (FP_CODE ? " (" + FP_CODE + ")" : "");
+    badge.hidden = false;
+  }
+  var fpLine = FP_NAME ? "\n추천 FP: " + FP_NAME + (FP_CODE ? " (" + FP_CODE + ")" : "") : "";
+
+  // 문자: iOS와 안드로이드의 본문 구분자가 다릅니다.
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+              (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var smsBody = encodeURIComponent(SHARE_TITLE + "\n" + SHARE_TEXT + fpLine + "\n" + SHARE_URL);
+  document.getElementById("smsLink").href = (isIOS ? "sms:&body=" : "sms:?body=") + smsBody;
+  document.getElementById("smsLink").addEventListener("click", function(){ setTimeout(closeSheet, 300); });
+
+  // 카카오톡
+  var kakaoReady = false;
+  try {
+    if (KAKAO_JS_KEY && window.Kakao) {
+      if (!Kakao.isInitialized()) Kakao.init(KAKAO_JS_KEY);
+      kakaoReady = Kakao.isInitialized();
+    }
+  } catch(e) { kakaoReady = false; }
+
+  function copyText(text, okMsg){
     function fallback(){
-      field.focus(); field.select(); field.setSelectionRange(0, 9999);
-      var ok = false;
-      try { ok = document.execCommand("copy"); } catch(e) {}
-      toast(ok ? "링크가 복사되었어요" : "링크를 길게 눌러 복사해 주세요");
+      var ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.opacity="0";
+      document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, 99999);
+      var ok = false; try { ok = document.execCommand("copy"); } catch(e) {}
+      document.body.removeChild(ta);
+      toast(ok ? okMsg : "복사에 실패했어요. 주소창의 링크를 길게 눌러 복사해 주세요.");
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(TARGET_URL)
-        .then(function(){ toast("링크가 복사되었어요"); })
-        .catch(fallback);
+      navigator.clipboard.writeText(text).then(function(){ toast(okMsg); }).catch(fallback);
     } else { fallback(); }
   }
 
-  function nativeShare(){
-    if (navigator.share) {
-      return navigator.share({ title: SHARE_TITLE, text: SHARE_TEXT, url: TARGET_URL })
-        .then(function(){ return true; })
-        .catch(function(err){ return err && err.name === "AbortError"; });
+  document.getElementById("kakaoBtn").addEventListener("click", function(){
+    if (kakaoReady) {
+      try {
+        Kakao.Share.sendDefault({
+          objectType: "text",
+          text: SHARE_TITLE + "\n" + SHARE_TEXT + fpLine,
+          link: { mobileWebUrl: SHARE_URL, webUrl: SHARE_URL },
+          buttonTitle: "바로가기"
+        });
+        closeSheet();
+        return;
+      } catch(e) {}
     }
-    return Promise.resolve(false);
-  }
+    copyText(SHARE_TITLE + "\n" + SHARE_URL, "링크를 복사했어요. 카카오톡 대화방에 붙여넣기 해 주세요.");
+    closeSheet();
+  });
 
-  // 공유 버튼: 휴대폰 기본 공유창을 먼저 시도하고, 지원하지 않으면 공유 시트를 엽니다.
-  document.getElementById("shareBtn").addEventListener("click", function(){
-    nativeShare().then(function(done){ if (!done) openSheet(); });
-  });
-  document.getElementById("nativeBtn").addEventListener("click", function(){
-    nativeShare().then(function(done){
-      if (done) closeSheet(); else { copyLink(); }
-    });
-  });
-  document.getElementById("copyBtn").addEventListener("click", copyLink);
+  document.getElementById("shareBtn").addEventListener("click", openSheet);
   document.getElementById("closeBtn").addEventListener("click", closeSheet);
   document.getElementById("sheetBg").addEventListener("click", closeSheet);
   document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeSheet(); });
 
   // 가로 스크롤 진행 절차: 현재 위치 점 표시
-  var flow = document.querySelector(".flow");
+  var flow = document.getElementById("flow");
   var dots = document.querySelectorAll("#dots span");
   var items = flow.querySelectorAll(".flow-item");
   flow.addEventListener("scroll", function(){
-    var idx = 0, best = Infinity, left = flow.getBoundingClientRect().left;
-    items.forEach(function(it, i){
-      var d = Math.abs(it.getBoundingClientRect().left - left - 20);
+    var idx = 0, best = Infinity, left = flow.getBoundingClientRect().left + 16;
+    for (var i = 0; i < items.length; i++){
+      var d = Math.abs(items[i].getBoundingClientRect().left - left);
       if (d < best){ best = d; idx = i; }
-    });
-    dots.forEach(function(dt, i){ dt.classList.toggle("on", i === idx); });
+    }
+    if (flow.scrollLeft + flow.clientWidth >= flow.scrollWidth - 4) idx = items.length - 1;
+    for (var j = 0; j < dots.length; j++) dots[j].classList.toggle("on", j === idx);
   }, { passive: true });
 })();
 </script>
