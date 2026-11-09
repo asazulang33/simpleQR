@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>신용대출 간편조회 바로가기</title>
+<meta name="description" content="교보생명 신용대출 간편조회 페이지 바로가기 및 링크 공유">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4f6f8; --card:#ffffff; --ink:#15191e; --sub:#5b6570; --line:#e3e7eb;
+    --primary:#1f6feb; --primary-ink:#ffffff; --primary-press:#1858c0;
+    --soft:#eef3fb; --ok:#127a46;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
+    background:var(--bg); color:var(--ink);
+    -webkit-font-smoothing:antialiased; word-break:keep-all;
+    padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+  .wrap{max-width:440px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;padding:28px 20px 24px}
+  .eyebrow{font-size:14px;font-weight:500;color:var(--primary);letter-spacing:.02em}
+  h1{font-size:28px;line-height:1.35;font-weight:800;margin:8px 0 10px;letter-spacing:-.02em}
+  .lead{font-size:16px;line-height:1.6;color:var(--sub)}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 20px;margin-top:24px}
+  .card h2{font-size:15px;font-weight:700;margin-bottom:14px}
+  .steps{list-style:none;display:grid;gap:14px}
+  .steps li{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.5}
+  .num{flex:none;width:28px;height:28px;border-radius:50%;background:var(--soft);color:var(--primary);
+       font-weight:700;font-size:14px;display:grid;place-items:center;margin-top:-1px}
+  .card.flow-card{padding:22px 0 18px}
+  .flow-card h2{padding:0 20px}
+  .flow-head{display:flex;justify-content:space-between;align-items:baseline;padding:0 20px}
+  .flow-head small{font-size:13px;color:#8a939c}
+  .flow{list-style:none;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+        padding:0 20px 4px;scroll-padding:0 20px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .flow::-webkit-scrollbar{display:none}
+  .flow-item{flex:0 0 76%;scroll-snap-align:start;display:flex;flex-direction:column;align-items:center;
+        text-align:center;padding:18px 16px;border-radius:16px;background:#f8fafc;border:1px solid #edf0f3}
+  .pic{width:110px}
+  .pic svg{display:block;width:100%;height:auto}
+  .txt{margin-top:14px;display:flex;flex-direction:column;align-items:center}
+  .txt .num{width:26px;height:26px;font-size:13px;margin:0 0 8px}
+  .txt b{display:block;font-size:17px;font-weight:700;margin-bottom:4px}
+  .txt p{font-size:14.5px;line-height:1.5;color:var(--sub)}
+  .dots{display:flex;justify-content:center;gap:6px;margin-top:14px}
+  .dots span{width:7px;height:7px;border-radius:4px;background:#d3d9df;transition:all .2s}
+  .dots span.on{width:20px;background:var(--primary)}
+  .flow-card .note{margin:16px 20px 0}
+  .note{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line);font-size:14px;color:var(--sub);line-height:1.55}
+
+  .actions{margin-top:auto;padding-top:28px;display:grid;gap:12px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:58px;
+       border-radius:16px;font:inherit;font-size:18px;font-weight:700;text-decoration:none;cursor:pointer;
+       border:1px solid transparent;transition:transform .08s ease, background .15s ease}
+  .btn:active{transform:scale(.985)}
+  .btn svg{width:22px;height:22px;flex:none}
+  .btn-primary{background:var(--primary);color:var(--primary-ink)}
+  .btn-primary:active{background:var(--primary-press)}
+  .btn-secondary{background:var(--card);color:var(--ink);border-color:var(--line)}
+  .btn:focus-visible{outline:3px solid #9cc1ff;outline-offset:2px}
+
+  .disclaimer{margin-top:18px;font-size:12.5px;color:#8a939c;line-height:1.55;text-align:center}
+
+  /* 공유 시트 */
+  .sheet-bg{position:fixed;inset:0;background:rgba(15,20,25,.45);opacity:0;pointer-events:none;transition:opacity .2s}
+  .sheet{position:fixed;left:0;right:0;bottom:0;max-width:440px;margin:0 auto;background:var(--card);
+         border-radius:22px 22px 0 0;padding:12px 20px calc(24px + env(safe-area-inset-bottom));
+         transform:translateY(105%);transition:transform .25s ease}
+  .open .sheet-bg{opacity:1;pointer-events:auto}
+  .open .sheet{transform:none}
+  .grab{width:40px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 16px}
+  .sheet h3{font-size:18px;font-weight:700;margin-bottom:6px}
+  .sheet p{font-size:14px;color:var(--sub);margin-bottom:16px}
+  .url-row{display:flex;gap:8px;margin-bottom:12px}
+  .url-row input{flex:1;min-width:0;height:52px;border:1px solid var(--line);border-radius:12px;padding:0 12px;
+       font:inherit;font-size:14px;color:var(--ink);background:#fafbfc}
+  .url-row button{flex:none;height:52px;padding:0 18px;border-radius:12px;border:0;background:var(--ink);color:#fff;
+       font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+  .share-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .share-grid a,.share-grid button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;
+       border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;
+       font:inherit;font-size:15px;font-weight:500;cursor:pointer}
+  .close{width:100%;margin-top:12px;min-height:50px;border:0;background:transparent;color:var(--sub);font:inherit;font-size:15px;cursor:pointer}
+
+  .toast{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom));transform:translate(-50%,20px);
+         background:#15191e;color:#fff;font-size:15px;padding:12px 18px;border-radius:999px;opacity:0;
+         pointer-events:none;transition:all .2s;white-space:nowrap}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div>
+    <div class="eyebrow">교보생명 신용대출 간편조회</div>
+    <h1>내 대출 한도와 금리,<br>3분이면 확인해요</h1>
+    <p class="lead">교보생명 신용대출 간편조회 페이지로 바로 이동하거나, 필요한 분께 링크를 공유하세요.</p>
+  </div>
+
+  <section class="card flow-card" aria-label="이용 방법">
+    <div class="flow-head"><h2 style="padding:0">이렇게 진행돼요</h2><small>옆으로 넘겨보세요 →</small></div>
+    <div style="height:14px"></div>
+    <ol class="flow">
+      <li class="flow-item">
+        <div class="pic" aria-hidden="true">
+          <svg viewBox="0 0 96 150">
+            <rect x="4" y="2" width="88" height="146" rx="14" fill="#fff" stroke="#c9d1da" stroke-width="2"/>
+            <rect x="36" y="9" width="24" height="4" rx="2" fill="#dde3e9"/>
+            <rect x="14" y="26" width="46" height="7" rx="3.5" fill="#cfd8e3"/>
+            <rect x="14" y="38" width="62" height="7" rx="3.5" fill="#cfd8e3"/>
+            <rect x="14" y="56" width="68" height="34" rx="8" fill="#eef3fb"/>
+            <rect x="22" y="66" width="34" height="5" rx="2.5" fill="#b9cbe8"/>
+            <rect x="22" y="76" width="22" height="5" rx="2.5" fill="#b9cbe8"/>
+            <rect x="14" y="114" width="68" height="20" rx="7" fill="#1f6feb"/>
+            <text x="48" y="127.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="Noto Sans KR, sans-serif">조회하러 가기</text>
+            <circle cx="66" cy="126" r="11" fill="#1f6feb" opacity=".18"/>
+            <path d="M64 120c0-2 3-2 3 0v9l2-1.5c1.6-1.2 3.4.6 2.2 2.2L66 137c-1 1.2-2 2-4 2h-4c-2 0-3-1.5-3-3v-6c0-1.8 2.8-1.8 2.8 0v-1.5c0-1.8 2.8-1.8 2.8 0V128c0-1.8 3.4-1.8 3.4 0z" fill="#fff" stroke="#15191e" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="txt">
+          <span class="num">1</span>
+          <b>조회하러 가기</b>
+          <p>아래 파란 버튼을 누르면 교보생명 조회 화면이 열려요.</p>
+        </div>
+      </li>
+      <li class="flow-item">
+        <div class="pic" aria-hidden="true">
+          <svg viewBox="0 0 96 150">
+            <rect x="4" y="2" width="88" height="146" rx="14" fill="#fff" stroke="#c9d1da" stroke-width="2"/>
+            <rect x="36" y="9" width="24" height="4" rx="2" fill="#dde3e9"/>
+            <rect x="14" y="26" width="50" height="7" rx="3.5" fill="#cfd8e3"/>
+            <text x="14" y="52" font-size="7" fill="#5b6570" font-family="Noto Sans KR, sans-serif">이름</text>
+            <rect x="14" y="56" width="68" height="14" rx="4" fill="#fafbfc" stroke="#dbe1e7"/>
+            <text x="14" y="82" font-size="7" fill="#5b6570" font-family="Noto Sans KR, sans-serif">휴대폰 번호</text>
+            <rect x="14" y="86" width="68" height="14" rx="4" fill="#fafbfc" stroke="#1f6feb" stroke-width="1.5"/>
+            <text x="19" y="96" font-size="7" fill="#8a939c" font-family="Noto Sans KR, sans-serif">010-••••-••••</text>
+            <rect x="14" y="114" width="68" height="20" rx="7" fill="#15191e"/>
+            <text x="48" y="127.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="Noto Sans KR, sans-serif">인증번호 받기</text>
+            <circle cx="76" cy="30" r="9" fill="#e7f5ee"/>
+            <path d="M72 30l3 3 5-6" fill="none" stroke="#127a46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="txt">
+          <span class="num">2</span>
+          <b>휴대폰 본인확인</b>
+          <p>이름과 휴대폰 번호를 입력하고 문자로 받은 인증번호를 넣어요.</p>
+        </div>
+      </li>
+      <li class="flow-item">
+        <div class="pic" aria-hidden="true">
+          <svg viewBox="0 0 96 150">
+            <rect x="4" y="2" width="88" height="146" rx="14" fill="#fff" stroke="#c9d1da" stroke-width="2"/>
+            <rect x="36" y="9" width="24" height="4" rx="2" fill="#dde3e9"/>
+            <rect x="14" y="26" width="40" height="7" rx="3.5" fill="#cfd8e3"/>
+            <rect x="14" y="42" width="68" height="40" rx="8" fill="#eef3fb"/>
+            <text x="22" y="56" font-size="7" fill="#5b6570" font-family="Noto Sans KR, sans-serif">대출 가능 한도</text>
+            <text x="22" y="72" font-size="11" font-weight="800" fill="#1f6feb" font-family="Noto Sans KR, sans-serif">○○○만원</text>
+            <rect x="14" y="88" width="68" height="28" rx="8" fill="#f4f6f8"/>
+            <text x="22" y="105" font-size="7" fill="#5b6570" font-family="Noto Sans KR, sans-serif">금리</text>
+            <text x="74" y="105.5" text-anchor="end" font-size="9" font-weight="800" fill="#15191e" font-family="Noto Sans KR, sans-serif">연 ○.○%</text>
+            <rect x="14" y="124" width="68" height="14" rx="5" fill="#dfe8f7"/>
+            <rect x="14" y="124" width="44" height="14" rx="5" fill="#1f6feb" opacity=".35"/>
+          </svg>
+        </div>
+        <div class="txt">
+          <span class="num">3</span>
+          <b>한도·금리 확인</b>
+          <p>약 3분이면 나에게 맞는 대출 가능 금액과 금리가 나와요.</p>
+        </div>
+      </li>
+    </ol>
+    <div class="dots" id="dots" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
+    <p class="note">상담용 한도 조회만으로는 신용점수에 영향이 없습니다.</p>
+  </section>
+
+  <div class="actions">
+    <a class="btn btn-primary" id="goBtn" href="https://www.kyobo.com/dgt/web/loan/credit/credit-loan-step1" target="_blank" rel="noopener">
+      조회하러 가기
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <button class="btn btn-secondary" id="shareBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+      링크 공유하기
+    </button>
+  </div>
+
+  <p class="disclaimer">이 페이지는 바로가기 안내 페이지이며,<br>버튼을 누르면 교보생명 공식 홈페이지(kyobo.com)로 이동합니다.</p>
+</main>
+
+<div id="sheetRoot" aria-hidden="true">
+  <div class="sheet-bg" id="sheetBg"></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <div class="grab"></div>
+    <h3 id="sheetTitle">링크 공유하기</h3>
+    <p>아래 링크를 복사해 메신저나 문자로 보내세요.</p>
+    <div class="url-row">
+      <input id="urlField" type="text" readonly aria-label="공유할 링크">
+      <button id="copyBtn" type="button">복사</button>
+    </div>
+    <div class="share-grid">
+      <a id="smsLink" href="#">💬 문자로 보내기</a>
+      <button id="nativeBtn" type="button">📤 다른 앱으로</button>
+    </div>
+    <button class="close" id="closeBtn" type="button">닫기</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var TARGET_URL = "https://www.kyobo.com/dgt/web/loan/credit/credit-loan-step1";
+  var SHARE_TITLE = "교보생명 신용대출 간편조회";
+  var SHARE_TEXT = "휴대폰 본인확인으로 대출 한도와 금리를 간편하게 조회해 보세요.";
+
+  var root = document.getElementById("sheetRoot");
+  var field = document.getElementById("urlField");
+  var toastEl = document.getElementById("toast");
+  var toastTimer;
+
+  field.value = TARGET_URL;
+  document.getElementById("smsLink").href =
+    "sms:?&body=" + encodeURIComponent(SHARE_TITLE + "\n" + TARGET_URL);
+
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 2000);
+  }
+  function openSheet(){ root.classList.add("open"); root.setAttribute("aria-hidden","false"); }
+  function closeSheet(){ root.classList.remove("open"); root.setAttribute("aria-hidden","true"); }
+
+  function copyLink(){
+    function fallback(){
+      field.focus(); field.select(); field.setSelectionRange(0, 9999);
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch(e) {}
+      toast(ok ? "링크가 복사되었어요" : "링크를 길게 눌러 복사해 주세요");
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(TARGET_URL)
+        .then(function(){ toast("링크가 복사되었어요"); })
+        .catch(fallback);
+    } else { fallback(); }
+  }
+
+  function nativeShare(){
+    if (navigator.share) {
+      return navigator.share({ title: SHARE_TITLE, text: SHARE_TEXT, url: TARGET_URL })
+        .then(function(){ return true; })
+        .catch(function(err){ return err && err.name === "AbortError"; });
+    }
+    return Promise.resolve(false);
+  }
+
+  // 공유 버튼: 휴대폰 기본 공유창을 먼저 시도하고, 지원하지 않으면 공유 시트를 엽니다.
+  document.getElementById("shareBtn").addEventListener("click", function(){
+    nativeShare().then(function(done){ if (!done) openSheet(); });
+  });
+  document.getElementById("nativeBtn").addEventListener("click", function(){
+    nativeShare().then(function(done){
+      if (done) closeSheet(); else { copyLink(); }
+    });
+  });
+  document.getElementById("copyBtn").addEventListener("click", copyLink);
+  document.getElementById("closeBtn").addEventListener("click", closeSheet);
+  document.getElementById("sheetBg").addEventListener("click", closeSheet);
+  document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeSheet(); });
+
+  // 가로 스크롤 진행 절차: 현재 위치 점 표시
+  var flow = document.querySelector(".flow");
+  var dots = document.querySelectorAll("#dots span");
+  var items = flow.querySelectorAll(".flow-item");
+  flow.addEventListener("scroll", function(){
+    var idx = 0, best = Infinity, left = flow.getBoundingClientRect().left;
+    items.forEach(function(it, i){
+      var d = Math.abs(it.getBoundingClientRect().left - left - 20);
+      if (d < best){ best = d; idx = i; }
+    });
+    dots.forEach(function(dt, i){ dt.classList.toggle("on", i === idx); });
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
