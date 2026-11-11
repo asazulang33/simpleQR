@@ -29,30 +29,30 @@
 
   /* 1. 타이틀 */
   .titlebar{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
-  .title{font-size:24px;font-weight:800;color:#4dac27;line-height:1.25;letter-spacing:-.03em;white-space:nowrap;padding-top:6px}
+  .title{font-size:26px;font-weight:800;color:#2e7d15;line-height:1.25;letter-spacing:-.03em;white-space:nowrap;padding-top:6px}
   .titlebar .logo{flex:none;height:34px;width:auto;display:block}
 
   /* 2. 부제 */
-  h1{margin-top:18px;font-size:27px;line-height:1.32;font-weight:800;letter-spacing:-.03em}
+  h1{margin-top:18px;font-size:29px;line-height:1.32;font-weight:800;letter-spacing:-.03em}
   h1 em{font-style:normal;color:var(--primary)}
 
   /* 공통 섹션 */
-  .sec{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+  .sec{margin-top:16px;background:var(--card);border:1.5px solid #dde3ea;border-radius:18px;padding:16px}
   .sec-h{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:800;margin-bottom:10px}
-  .sec-h .tag{padding:3px 10px;border-radius:7px;font-size:13px;font-weight:800}
+  .sec-h .tag{padding:4px 12px;border-radius:8px;font-size:15px;font-weight:800}
 
   /* 3. 대상 */
   .target .tag{background:var(--primary);color:#fff}
   .target ul{list-style:none;display:grid;gap:8px}
-  .target li{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700}
-  .target li svg{flex:none;width:22px;height:22px;color:var(--primary)}
+  .target li{display:flex;align-items:center;gap:10px;font-size:18.5px;font-weight:800}
+  .target li svg{flex:none;width:24px;height:24px;color:var(--primary)}
 
   /* 4. 주의사항 */
   .caution .tag{background:#ffb020;color:#3d2800}
   .caution ul{list-style:none;display:grid;gap:8px}
-  .caution li{display:flex;gap:9px;align-items:flex-start;font-size:15px;line-height:1.5;color:var(--ink2);
+  .caution li{display:flex;gap:9px;align-items:flex-start;font-size:16px;line-height:1.5;color:var(--ink);
        padding:10px 12px;border-radius:12px}
-  .caution li svg{flex:none;width:18px;height:18px;margin-top:2px}
+  .caution li svg{flex:none;width:20px;height:20px;margin-top:2px}
   .caution .ok{background:#ecf8f1}
   .caution .ok svg{color:#127a46}
   .caution .warn{background:#fff4dc;color:#5f3a00}
@@ -60,8 +60,8 @@
   .caution .warn b{color:#5f3a00}
 
   /* 조회 버튼 */
-  .go-btn{margin-top:16px;display:flex;align-items:center;justify-content:center;gap:8px;min-height:60px;border-radius:16px;
-        background:var(--primary);color:#fff;font-size:19px;font-weight:800;text-decoration:none;
+  .go-btn{margin-top:16px;display:flex;align-items:center;justify-content:center;gap:8px;min-height:64px;border-radius:16px;
+        background:var(--primary);color:#fff;font-size:21px;font-weight:800;text-decoration:none;
         box-shadow:0 8px 18px rgba(31,111,235,.3);transition:transform .08s}
   .go-btn:active{transform:scale(.98)}
   .go-btn svg{width:22px;height:22px}
@@ -69,10 +69,10 @@
 
   /* 5. 링크 공유 */
   .share{margin-top:16px}
-  .share-h{font-size:15px;font-weight:800;margin-bottom:10px;padding-left:2px}
+  .share-h{font-size:17px;font-weight:800;margin-bottom:10px;padding-left:2px}
   .share-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .sbtn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;border-radius:16px;border:0;
-        font:inherit;font-size:18px;font-weight:800;text-decoration:none;cursor:pointer;transition:transform .08s}
+  .sbtn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:60px;border-radius:16px;border:0;
+        font:inherit;font-size:20px;font-weight:800;text-decoration:none;cursor:pointer;transition:transform .08s}
   .sbtn:active{transform:scale(.97)}
   .sbtn svg{width:24px;height:24px;flex:none}
   .sbtn-sms{background:var(--sms);color:#fff;box-shadow:0 6px 14px rgba(34,180,90,.25)}
@@ -86,24 +86,27 @@
          opacity:0;pointer-events:none;transition:all .2s;text-align:center}
   .toast.show{opacity:1;transform:translate(-50%,0)}
 
+  @media (max-width:400px){
+    .title{font-size:24.5px}
+  }
   @media (max-width:375px){
-    .title{font-size:21px;padding-top:4px}
-    .titlebar .logo{height:29px}
-    h1{font-size:24px}
+    .title{font-size:22px;padding-top:4px}
+    .titlebar .logo{height:30px}
+    h1{font-size:26px}
   }
   @media (max-height:799px){
     .wrap{padding-top:calc(14px + env(safe-area-inset-top))}
-    h1{margin-top:14px;font-size:23px}
+    h1{margin-top:14px;font-size:25px}
     .sec{margin-top:12px;padding:13px 14px}
-    .target li{font-size:16px}
-    .caution li{font-size:14px;padding:8px 10px}
-    .share{margin-top:12px}
-    .sbtn{min-height:48px;font-size:16px}
-    .go-btn{margin-top:12px;min-height:52px;font-size:17px}
     .sec-h{margin-bottom:8px}
+    .sec-h .tag{font-size:14px;padding:3px 10px}
     .target ul,.caution ul{gap:6px}
-    .caution li{padding:7px 10px;line-height:1.45}
-    .disclaimer{font-size:11px;margin-top:10px}
+    .target li{font-size:17px}
+    .caution li{font-size:15px;padding:8px 10px;line-height:1.45}
+    .go-btn{margin-top:12px;min-height:56px;font-size:19px}
+    .share{margin-top:12px}
+    .share-h{font-size:16px;margin-bottom:8px}
+    .sbtn{min-height:52px;font-size:18px}
   }
 </style>
 </head>
@@ -150,7 +153,6 @@
     </div>
   </section>
 
-  <p class="disclaimer">이 페이지는 바로가기 안내 페이지이며,<br>버튼과 공유 링크는 교보생명 공식 홈페이지(kyobo.com)로 연결됩니다.</p>
 </main>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
