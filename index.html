@@ -3,402 +3,199 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>교보생명 신용대출 간편조회 바로가기</title>
-<meta name="description" content="교보생명 신용대출 간편조회 바로가기 · 휴대폰 본인확인 후 한도와 금리를 조회하세요.">
-<meta property="og:title" content="교보생명 신용대출 간편조회 바로가기">
-<meta property="og:description" content="내 대출 한도와 금리, 3분이면 확인해요">
+<title>교보생명 신용대출 간편조회</title>
+<meta name="description" content="보험계약자 전용 신용대출 한도, 금리 확인">
+<meta property="og:title" content="교보생명 신용대출 간편조회">
+<meta property="og:description" content="보험계약자 전용 신용대출 한도, 금리 확인">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#f4f6f8; --card:#ffffff; --ink:#15191e; --sub:#5b6570; --line:#e3e7eb; --ink2:#3a434d;
-    --primary:#1f6feb; --primary-press:#1858c0; --soft:#eef3fb;
-    --kakao:#fee500; --kakao-ink:#191600;
+    --bg:#f4f6f8; --card:#fff; --ink:#15191e; --ink2:#3a434d; --line:#e3e7eb;
+    --primary:#1f6feb; --soft:#eef3fb;
+    --kakao:#fee500; --kakao-ink:#191600; --sms:#22b45a;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  [hidden]{display:none!important}
   html,body{height:100%}
-  body{
-    font-family:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
-    background:var(--bg); color:var(--ink);
-    -webkit-font-smoothing:antialiased; word-break:keep-all;
-  }
-  .wrap{
-    max-width:440px; margin:0 auto; min-height:100vh; min-height:100dvh;
-    display:flex; flex-direction:column; justify-content:center;
-    padding:calc(18px + env(safe-area-inset-top)) 18px calc(14px + env(safe-area-inset-bottom));
-  }
+  body{font-family:"Noto Sans KR",-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo",sans-serif;
+       background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;word-break:keep-all}
+  .wrap{max-width:440px;margin:0 auto;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;justify-content:center;
+        padding:calc(20px + env(safe-area-inset-top)) 18px calc(16px + env(safe-area-inset-bottom))}
 
-  /* 상단 */
-  .titlebar{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:16px}
-  .eyebrow{font-size:24px;font-weight:800;color:var(--primary);line-height:1.25;letter-spacing:-.03em;white-space:nowrap;padding-top:6px}
+  /* 1. 타이틀 */
+  .titlebar{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+  .title{font-size:24px;font-weight:800;color:var(--primary);line-height:1.25;letter-spacing:-.03em;white-space:nowrap;padding-top:6px}
   .titlebar .logo{flex:none;height:34px;width:auto;display:block}
-  h1{font-size:25px;line-height:1.3;font-weight:800;margin:0 0 8px;letter-spacing:-.03em}
-  .lead{font-size:15px;line-height:1.5;color:var(--ink2)}
 
-  /* 대상 */
-  .info{margin-top:10px}
-  .target{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;
-        background:var(--soft);border:1px solid #d6e3fa;font-size:15.5px;font-weight:700;line-height:1.4;color:var(--ink)}
-  .target b{flex:none;padding:3px 9px;border-radius:7px;background:var(--primary);color:#fff;font-size:13px;font-weight:800}
+  /* 2. 부제 */
+  h1{margin-top:18px;font-size:27px;line-height:1.32;font-weight:800;letter-spacing:-.03em}
+  h1 em{font-style:normal;color:var(--primary)}
 
-  /* 진행 절차 카드 */
-  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 0;margin-top:12px;
-        box-shadow:0 1px 2px rgba(16,24,40,.04)}
-  .flow-head{display:flex;justify-content:space-between;align-items:baseline;padding:0 16px;margin-bottom:10px}
-  .flow-head h2{font-size:16.5px;font-weight:800}
-  .flow-head small{font-size:12.5px;color:var(--primary);font-weight:500}
-  .flow{list-style:none;display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
-        padding:0 16px;scroll-padding:0 16px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .flow::-webkit-scrollbar{display:none}
-  .flow-item{flex:0 0 87%;scroll-snap-align:start;display:flex;align-items:center;gap:14px;
-        padding:10px 14px;border-radius:14px;background:#f6f9fd;border:1px solid #e4ebf4}
-  .pic{flex:none;width:96px}
-  .pic svg{display:block;width:100%;height:auto}
-  .txt{flex:1;min-width:0}
-  .num{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;
-       background:var(--primary);color:#fff;font-weight:800;font-size:13px;margin-bottom:6px}
-  .txt b{display:block;font-size:17.5px;font-weight:800;margin-bottom:4px;letter-spacing:-.02em}
-  .txt p{font-size:14.5px;line-height:1.5;color:var(--ink2)}
-  .txt p em{font-style:normal;font-weight:800;color:var(--primary)}
-  .txt .fp{display:inline-block;margin-top:6px;padding:3px 8px;border-radius:6px;background:#e8f0fe;
-       color:var(--primary);font-size:12.5px;font-weight:700}
-  .dots{display:flex;justify-content:center;gap:5px;margin-top:10px}
-  .dots span{width:7px;height:7px;border-radius:4px;background:#cfd6de;transition:all .2s}
-  .dots span.on{width:20px;background:var(--primary)}
-  .note{display:flex;gap:7px;align-items:center;margin:10px 16px 0;font-size:14px;color:var(--ink2);line-height:1.45}
-  .note svg{flex:none;width:17px;height:17px;color:#127a46}
-  .note b{font-weight:700;color:var(--ink)}
-  .warn{display:flex;gap:8px;align-items:flex-start;margin:8px 16px 0;padding:10px 12px;border-radius:12px;
-        background:#fff4dc;border:1px solid #ffdf9e;color:#6f4400;font-size:14px;line-height:1.45}
-  .warn svg{flex:none;width:17px;height:17px;margin-top:1px}
-  .warn b{font-weight:800}
+  /* 공통 섹션 */
+  .sec{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px}
+  .sec-h{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:800;margin-bottom:10px}
+  .sec-h .tag{padding:3px 10px;border-radius:7px;font-size:13px;font-weight:800}
 
-  /* 버튼 */
-  .actions{padding-top:12px;display:grid;gap:10px}
-  .btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:56px;
-       border-radius:14px;font:inherit;font-size:18px;font-weight:800;text-decoration:none;cursor:pointer;
-       border:1px solid transparent;transition:transform .08s ease, background .15s ease}
-  .btn:active{transform:scale(.985)}
-  .btn svg{width:21px;height:21px;flex:none}
-  .btn-primary{background:var(--primary);color:#fff;box-shadow:0 6px 16px rgba(31,111,235,.28)}
-  .btn-primary:active{background:var(--primary-press)}
-  .btn-secondary{background:var(--card);color:var(--ink);border:1.5px solid #cfd6de}
-  .btn:focus-visible{outline:3px solid #9cc1ff;outline-offset:2px}
-  .disclaimer{margin-top:12px;font-size:12px;color:#7b848d;line-height:1.5;text-align:center}
+  /* 3. 대상 */
+  .target .tag{background:var(--primary);color:#fff}
+  .target ul{list-style:none;display:grid;gap:8px}
+  .target li{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700}
+  .target li svg{flex:none;width:22px;height:22px;color:var(--primary)}
 
-  /* 공유 시트 */
-  .sheet-bg{position:fixed;inset:0;background:rgba(15,20,25,.45);opacity:0;pointer-events:none;transition:opacity .2s}
-  .sheet{position:fixed;left:0;right:0;bottom:0;max-width:440px;margin:0 auto;background:var(--card);
-         border-radius:22px 22px 0 0;padding:12px 18px calc(18px + env(safe-area-inset-bottom));
-         transform:translateY(105%);transition:transform .25s ease}
-  .open .sheet-bg{opacity:1;pointer-events:auto}
-  .open .sheet{transform:none}
-  .grab{width:40px;height:4px;border-radius:2px;background:var(--line);margin:0 auto 14px}
-  .sheet h3{font-size:18px;font-weight:700;margin-bottom:14px}
+  /* 4. 주의사항 */
+  .caution .tag{background:#ffb020;color:#3d2800}
+  .caution ul{list-style:none;display:grid;gap:8px}
+  .caution li{display:flex;gap:9px;align-items:flex-start;font-size:15px;line-height:1.5;color:var(--ink2);
+       padding:10px 12px;border-radius:12px}
+  .caution li svg{flex:none;width:18px;height:18px;margin-top:2px}
+  .caution .ok{background:#ecf8f1}
+  .caution .ok svg{color:#127a46}
+  .caution .warn{background:#fff4dc;color:#5f3a00}
+  .caution b{font-weight:800;color:var(--ink)}
+  .caution .warn b{color:#5f3a00}
+
+  /* 조회 버튼 */
+  .go-btn{margin-top:16px;display:flex;align-items:center;justify-content:center;gap:8px;min-height:60px;border-radius:16px;
+        background:var(--primary);color:#fff;font-size:19px;font-weight:800;text-decoration:none;
+        box-shadow:0 8px 18px rgba(31,111,235,.3);transition:transform .08s}
+  .go-btn:active{transform:scale(.98)}
+  .go-btn svg{width:22px;height:22px}
+  .go-btn:focus-visible{outline:3px solid #9cc1ff;outline-offset:2px}
+
+  /* 5. 링크 공유 */
+  .share{margin-top:16px}
+  .share-h{font-size:15px;font-weight:800;margin-bottom:10px;padding-left:2px}
   .share-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .share-opt{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
-       min-height:96px;border-radius:16px;border:1px solid var(--line);background:var(--card);
-       color:var(--ink);text-decoration:none;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
-  .share-opt .ico{width:44px;height:44px;border-radius:50%;display:grid;place-items:center}
-  .share-opt .ico svg{width:24px;height:24px}
-  .ico-sms{background:#34c759;color:#fff}
-  .ico-kakao{background:var(--kakao);color:var(--kakao-ink)}
-  .close{width:100%;margin-top:10px;min-height:48px;border:0;background:transparent;color:var(--sub);font:inherit;font-size:15px;cursor:pointer}
+  .sbtn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;border-radius:16px;border:0;
+        font:inherit;font-size:18px;font-weight:800;text-decoration:none;cursor:pointer;transition:transform .08s}
+  .sbtn:active{transform:scale(.97)}
+  .sbtn svg{width:24px;height:24px;flex:none}
+  .sbtn-sms{background:var(--sms);color:#fff;box-shadow:0 6px 14px rgba(34,180,90,.25)}
+  .sbtn-kakao{background:var(--kakao);color:var(--kakao-ink);box-shadow:0 6px 14px rgba(200,170,0,.25)}
+  .sbtn:focus-visible{outline:3px solid #9cc1ff;outline-offset:2px}
+
+  .disclaimer{margin-top:14px;font-size:12px;color:#7b848d;line-height:1.5;text-align:center}
 
   .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,20px);
          max-width:calc(100% - 32px);background:#15191e;color:#fff;font-size:14px;padding:12px 18px;border-radius:14px;
          opacity:0;pointer-events:none;transition:all .2s;text-align:center}
   .toast.show{opacity:1;transform:translate(-50%,0)}
 
-  /* 화면 높이별 조정 (항상 한 화면에 들어오도록) */
-  @media (min-height:820px){
-    .pic{width:90px}
+  @media (max-width:375px){
+    .title{font-size:21px;padding-top:4px}
+    .titlebar .logo{height:29px}
+    h1{font-size:24px}
   }
   @media (max-height:799px){
-    .wrap{padding-top:calc(12px + env(safe-area-inset-top))}
-    h1{font-size:23px;margin:0 0 6px}
-    .titlebar{margin-bottom:12px}
-    .lead{font-size:14px}
-    .eyebrow{font-size:22px}
-    .info{margin-top:10px}
-    .target{font-size:14.5px;padding:9px 12px}
-    .card{margin-top:10px;padding:12px 0}
-    .flow-head{margin-bottom:8px}
-    .flow-item{padding:10px 12px}
-    .pic{width:68px}
-    .txt b{font-size:16.5px}
-    .txt p{font-size:14px}
-    .dots{margin-top:8px}
-    .note{font-size:13.5px;margin-top:8px}
-    .warn{font-size:13.5px;padding:8px 10px;margin-top:6px}
-    .actions{padding-top:12px;gap:8px}
-    .btn{min-height:52px;font-size:17px}
-    .disclaimer{font-size:11.5px;margin-top:10px}
-  }
-  @media (max-height:700px){
-    .eyebrow{font-size:20px;padding-top:4px}
-    .titlebar{margin-bottom:12px}
-    .titlebar .logo{height:30px}
-    h1{font-size:20px;letter-spacing:-.04em}
-    h1 br{display:none}
-    .lead{font-size:13.5px}
-    .target{font-size:13.5px;padding:8px 10px;gap:8px}
-    .target b{font-size:12px;padding:2px 7px}
-    .pic{width:62px}
-    .flow-item{padding:8px 12px}
-    .txt b{font-size:16px;margin-bottom:2px}
-    .txt p{font-size:13.5px}
-    .num{width:22px;height:22px;font-size:12px;margin-bottom:4px}
-    .note{font-size:13px}
-    .warn{font-size:13px;padding:7px 9px}
-    .btn{min-height:48px;font-size:16.5px}
-    .disclaimer{font-size:10.5px;line-height:1.45;margin-top:8px}
-  }
-  /* 폭이 좁은 화면 */
-  @media (max-width:375px){
-    .eyebrow{font-size:20px;padding-top:4px}
-    .titlebar .logo{height:29px}
-  }
-  @media (max-width:375px) and (max-height:799px){
-    h1{font-size:22px}
-    .lead{font-size:13.5px}
-    .target{font-size:14px}
-    .note,.warn{font-size:13px}
-    .pic{width:62px}
-    .txt p{font-size:13.5px}
+    .wrap{padding-top:calc(14px + env(safe-area-inset-top))}
+    h1{margin-top:14px;font-size:23px}
+    .sec{margin-top:12px;padding:13px 14px}
+    .target li{font-size:16px}
+    .caution li{font-size:14px;padding:8px 10px}
+    .share{margin-top:12px}
+    .sbtn{min-height:48px;font-size:16px}
+    .go-btn{margin-top:12px;min-height:52px;font-size:17px}
+    .sec-h{margin-bottom:8px}
+    .target ul,.caution ul{gap:6px}
+    .caution li{padding:7px 10px;line-height:1.45}
+    .disclaimer{font-size:11px;margin-top:10px}
   }
 </style>
 </head>
 <body>
 <main class="wrap">
   <header>
-    <div class="titlebar"><div class="eyebrow">교보생명 신용대출 간편조회</div><img class="logo" src="data:image/png;base64,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" alt="KYOBO"></div>
-    <h1>내 대출 한도와 금리, <br>3분이면 확인해요</h1>
-    <p class="lead">교보생명 신용대출 간편조회 페이지로 이동하거나, 링크를 공유하세요.</p>
-    <div class="info" aria-label="상품 안내">
-      <p class="target"><b>대상</b><span>소관고객 중 만 25세~65세, <span style="white-space:nowrap">보험 7회차 이상</span></span></p>
+    <div class="titlebar">
+      <div class="title">교보생명 신용대출 간편조회</div>
+      <img class="logo" src="data:image/png;base64,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" alt="KYOBO">
     </div>
+    <h1><em>보험계약자 전용</em><br>신용대출 한도, 금리 확인</h1>
   </header>
 
-  <section class="card" aria-label="진행 절차">
-    <div class="flow-head"><h2>이렇게 진행돼요</h2><small>옆으로 넘겨보세요 →</small></div>
-    <ol class="flow" id="flow">
-      <li class="flow-item">
-        <div class="pic" aria-hidden="true">
-          <svg viewBox="0 0 96 150">
-            <rect x="4" y="2" width="88" height="146" rx="14" fill="#fff" stroke="#c9d1da" stroke-width="2"/>
-            <rect x="36" y="9" width="24" height="4" rx="2" fill="#dde3e9"/>
-            <rect x="14" y="26" width="46" height="7" rx="3.5" fill="#cfd8e3"/>
-            <rect x="14" y="38" width="62" height="7" rx="3.5" fill="#cfd8e3"/>
-            <rect x="14" y="56" width="68" height="34" rx="8" fill="#eef3fb"/>
-            <rect x="22" y="66" width="34" height="5" rx="2.5" fill="#b9cbe8"/>
-            <rect x="22" y="76" width="22" height="5" rx="2.5" fill="#b9cbe8"/>
-            <rect x="14" y="114" width="68" height="20" rx="7" fill="#1f6feb"/>
-            <text x="48" y="127.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="Noto Sans KR, sans-serif">조회하러 가기</text>
-            <circle cx="66" cy="126" r="11" fill="#1f6feb" opacity=".18"/>
-            <path d="M64 120c0-2 3-2 3 0v9l2-1.5c1.6-1.2 3.4.6 2.2 2.2L66 137c-1 1.2-2 2-4 2h-4c-2 0-3-1.5-3-3v-6c0-1.8 2.8-1.8 2.8 0v-1.5c0-1.8 2.8-1.8 2.8 0V128c0-1.8 3.4-1.8 3.4 0z" fill="#fff" stroke="#15191e" stroke-width="1.6" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="txt">
-          <span class="num">1</span>
-          <b>조회하러 가기</b>
-          <p>아래 파란 버튼을 누르면 교보생명 조회 화면이 열려요.</p>
-        </div>
-      </li>
-      <li class="flow-item">
-        <div class="pic" aria-hidden="true">
-          <svg viewBox="0 0 96 150">
-            <rect x="4" y="2" width="88" height="146" rx="14" fill="#fff" stroke="#c9d1da" stroke-width="2"/>
-            <rect x="36" y="9" width="24" height="4" rx="2" fill="#dde3e9"/>
-            <rect x="14" y="26" width="50" height="7" rx="3.5" fill="#cfd8e3"/>
-            <text x="14" y="52" font-size="7" fill="#5b6570" font-family="Noto Sans KR, sans-serif">이름</text>
-            <rect x="14" y="56" width="68" height="14" rx="4" fill="#fafbfc" stroke="#dbe1e7"/>
-            <text x="14" y="82" font-size="7" fill="#5b6570" font-family="Noto Sans KR, sans-serif">휴대폰 번호</text>
-            <rect x="14" y="86" width="68" height="14" rx="4" fill="#fafbfc" stroke="#1f6feb" stroke-width="1.5"/>
-            <text x="19" y="96" font-size="7" fill="#8a939c" font-family="Noto Sans KR, sans-serif">010-••••-••••</text>
-            <rect x="14" y="114" width="68" height="20" rx="7" fill="#15191e"/>
-            <text x="48" y="127.5" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="Noto Sans KR, sans-serif">인증번호 받기</text>
-            <circle cx="76" cy="30" r="9" fill="#e7f5ee"/>
-            <path d="M72 30l3 3 5-6" fill="none" stroke="#127a46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="txt">
-          <span class="num">2</span>
-          <b>휴대폰 본인확인</b>
-          <p>이름과 휴대폰 번호를 입력하고 받은 인증번호를 넣어요.</p>
-        </div>
-      </li>
-      <li class="flow-item">
-        <div class="pic" aria-hidden="true">
-          <svg viewBox="0 0 96 150">
-            <rect x="4" y="2" width="88" height="146" rx="14" fill="#fff" stroke="#c9d1da" stroke-width="2"/>
-            <rect x="36" y="9" width="24" height="4" rx="2" fill="#dde3e9"/>
-            <rect x="14" y="20" width="68" height="34" rx="7" fill="#eef3fb"/>
-            <text x="20" y="31" font-size="6.5" fill="#5b6570" font-family="Noto Sans KR, sans-serif">대출 가능 한도</text>
-            <text x="20" y="46" font-size="10.5" font-weight="800" fill="#1f6feb" font-family="Noto Sans KR, sans-serif">000만원</text>
-            <rect x="14" y="58" width="68" height="18" rx="6" fill="#f4f6f8"/>
-            <text x="20" y="70" font-size="6.5" fill="#5b6570" font-family="Noto Sans KR, sans-serif">금리</text>
-            <text x="76" y="70.5" text-anchor="end" font-size="8.5" font-weight="800" fill="#15191e" font-family="Noto Sans KR, sans-serif">연 0.0%</text>
-            <rect x="10" y="82" width="76" height="58" rx="8" fill="#f2f7ff" stroke="#1f6feb" stroke-width="1.6" stroke-dasharray="4 3"/>
-            <text x="16" y="95" font-size="7.5" font-weight="800" fill="#1f6feb" font-family="Noto Sans KR, sans-serif">추천 FP 등록</text>
-            <rect x="16" y="100" width="64" height="14" rx="4" fill="#fff" stroke="#c9d6ea"/>
-            <text x="20" y="110" font-size="6.5" fill="#8a939c" font-family="Noto Sans KR, sans-serif">FP 코드</text>
-            <rect x="16" y="119" width="64" height="15" rx="5" fill="#1f6feb"/>
-            <text x="48" y="129.5" text-anchor="middle" font-size="7.5" font-weight="700" fill="#fff" font-family="Noto Sans KR, sans-serif">등록하기</text>
-          </svg>
-        </div>
-        <div class="txt">
-          <span class="num">3</span>
-          <b>한도·금리 확인</b>
-          <p>결과 화면 아래 <em>추천 FP 등록</em>을 클릭해주세요.</p>
-          <span class="fp" id="fpBadge" hidden></span>
-        </div>
-      </li>
-    </ol>
-    <div class="dots" id="dots" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
-    <p class="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.3l2.7 2.7L16 9.7"/></svg><span>상담용 한도 조회만으로는 <b>신용점수에 영향이 없습니다.</b></span></p>
-    <p class="warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 7.5v5.5M12 16.5v.01"/></svg><span>조회하면 신용정보를 조회했다는 안내문자가 나갈 수 있어요. <b>꼭 동의 후 진행해주세요.</b></span></p>
+  <section class="sec target" aria-label="대상">
+    <div class="sec-h"><span class="tag">대상</span></div>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>소관고객 중 만 25세~65세</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>보험 7회차 이상</li>
+    </ul>
   </section>
 
-  <div class="actions">
-    <a class="btn btn-primary" href="https://www.kyobo.com/dgt/web/loan/credit/credit-loan-step1" target="_blank" rel="noopener">
-      조회하러 가기
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
-    <button class="btn btn-secondary" id="shareBtn" type="button">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
-      링크 공유하기
-    </button>
-  </div>
+  <section class="sec caution" aria-label="주의사항">
+    <div class="sec-h"><span class="tag">주의사항</span></div>
+    <ul>
+      <li class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M8 12.3l2.7 2.7L16 9.7"/></svg><span>상담용 한도 조회만으로는 <b>신용점수에 영향이 없습니다.</b></span></li>
+      <li class="warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M12 7.5v5.5M12 16.5v.01"/></svg><span>조회하면 신용정보를 조회했다는 안내문자가 나갈 수 있어요. <b>꼭 동의 후 진행해주세요.</b></span></li>
+    </ul>
+  </section>
 
-  <p class="disclaimer">이 페이지는 바로가기 안내 페이지이며,<br>버튼을 누르면 교보생명 공식 홈페이지(kyobo.com)로 이동합니다.</p>
-</main>
+  <a class="go-btn" href="https://www.kyobo.com/dgt/web/loan/credit/credit-loan-step1" target="_blank" rel="noopener">
+    한도·금리 조회하러 가기
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
 
-<!-- 공유 시트: 문자 / 카카오톡 -->
-<div id="sheetRoot" aria-hidden="true">
-  <div class="sheet-bg" id="sheetBg"></div>
-  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
-    <div class="grab"></div>
-    <h3 id="sheetTitle">링크 공유하기</h3>
+  <section class="share" aria-label="링크 공유">
+    <div class="share-h">링크 공유</div>
     <div class="share-grid">
-      <a class="share-opt" id="smsLink" href="#">
-        <span class="ico ico-sms"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.4 4.7 3.7 6.2L5 21l4.2-2.4c.9.2 1.8.3 2.8.3 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg></span>
-        문자
+      <a class="sbtn sbtn-sms" id="smsBtn" href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.5 1.4 4.7 3.7 6.2L5 21l4.2-2.4c.9.2 1.8.3 2.8.3 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>문자
       </a>
-      <button class="share-opt" id="kakaoBtn" type="button">
-        <span class="ico ico-kakao"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3.5c-5.2 0-9.5 3.3-9.5 7.4 0 2.6 1.7 4.9 4.4 6.2l-1 3.6c-.1.3.3.6.6.4l4.3-2.8c.4 0 .8.1 1.2.1 5.2 0 9.5-3.3 9.5-7.4S17.2 3.5 12 3.5z"/></svg></span>
-        카카오톡
+      <button class="sbtn sbtn-kakao" id="kakaoBtn" type="button">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3.5c-5.2 0-9.5 3.3-9.5 7.4 0 2.6 1.7 4.9 4.4 6.2l-1 3.6c-.1.3.3.6.6.4l4.3-2.8c.4 0 .8.1 1.2.1 5.2 0 9.5-3.3 9.5-7.4S17.2 3.5 12 3.5z"/></svg>카카오톡
       </button>
     </div>
-    <button class="close" id="closeBtn" type="button">닫기</button>
-  </div>
-</div>
+  </section>
+
+  <p class="disclaimer">이 페이지는 바로가기 안내 페이지이며,<br>버튼과 공유 링크는 교보생명 공식 홈페이지(kyobo.com)로 연결됩니다.</p>
+</main>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<!-- 카카오 JavaScript SDK (카카오톡 공유용) -->
-<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.8.1/kakao.min.js" crossorigin="anonymous"></script>
 <script>
 (function(){
-  /* ===== 여기만 수정하세요 ===== */
-  var KAKAO_JS_KEY = "";           // 카카오 디벨로퍼스 JavaScript 키 (비워두면 링크 복사로 대체)
-  var FP_NAME = "";                // 추천 FP 이름 (예: "홍길동") — 비워두면 표시 안 함
-  var FP_CODE = "";                // 추천 FP 코드 (선택)
-  var SHARE_URL = "https://www.kyobo.com/dgt/web/loan/credit/credit-loan-step1";  // 공유할 주소
+  /* ===================== 여기만 수정하세요 ===================== */
+  var FP_NAME = "";        // 추천 FP 이름 (선택, 예: "홍길동")
+  var FP_CODE = "";        // 추천 FP 코드 (선택)
+  var KYOBO_URL = "https://www.kyobo.com/dgt/web/loan/credit/credit-loan-step1";
   var SHARE_TITLE = "교보생명 신용대출 간편조회";
-  var SHARE_TEXT = "내 대출 한도와 금리, 3분이면 확인해요.";
-  var SHARE_ASK = "조회 후 FP 추천인 입력 부탁드려요.";  // 공유 메시지에 들어가는 부탁 문구
-  /* ============================ */
+  var SHARE_TEXT = "보험계약자 전용 신용대출 한도, 금리 확인";
+  var SHARE_ASK = "조회 후 FP 추천인 입력 부탁드려요.";
+  /* ============================================================= */
 
-  var root = document.getElementById("sheetRoot");
-  var toastEl = document.getElementById("toast");
-  var toastTimer;
-
+  var toastEl = document.getElementById("toast"), timer;
   function toast(msg){
-    toastEl.textContent = msg;
-    toastEl.classList.add("show");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function(){ toastEl.classList.remove("show"); }, 2600);
+    toastEl.textContent = msg; toastEl.classList.add("show");
+    clearTimeout(timer); timer = setTimeout(function(){ toastEl.classList.remove("show"); }, 2800);
   }
-  function openSheet(){ root.classList.add("open"); root.setAttribute("aria-hidden","false"); }
-  function closeSheet(){ root.classList.remove("open"); root.setAttribute("aria-hidden","true"); }
 
-  // 추천 FP 표시
-  if (FP_NAME) {
-    var badge = document.getElementById("fpBadge");
-    badge.textContent = "추천 FP: " + FP_NAME + (FP_CODE ? " (" + FP_CODE + ")" : "");
-    badge.hidden = false;
-  }
   var fpLine = FP_NAME ? "\n추천 FP: " + FP_NAME + (FP_CODE ? " (" + FP_CODE + ")" : "") : "";
+  var MESSAGE = SHARE_TITLE + "\n" + SHARE_TEXT + "\n\n" + SHARE_ASK + fpLine + "\n\n" + KYOBO_URL;
 
-  // 문자: iOS와 안드로이드의 본문 구분자가 다릅니다.
+  /* 문자: 휴대폰 문자 앱이 메시지가 입력된 채로 열리고, 받는 사람을 고를 수 있습니다. */
   var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
               (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-  var MESSAGE = SHARE_TITLE + "\n" + SHARE_TEXT + "\n\n" + SHARE_ASK + fpLine + "\n\n" + SHARE_URL;
-  var smsBody = encodeURIComponent(MESSAGE);
-  document.getElementById("smsLink").href = (isIOS ? "sms:&body=" : "sms:?body=") + smsBody;
-  document.getElementById("smsLink").addEventListener("click", function(){ setTimeout(closeSheet, 300); });
+  document.getElementById("smsBtn").href = (isIOS ? "sms:&body=" : "sms:?body=") + encodeURIComponent(MESSAGE);
 
-  // 카카오톡
-  var kakaoReady = false;
-  try {
-    if (KAKAO_JS_KEY && window.Kakao) {
-      if (!Kakao.isInitialized()) Kakao.init(KAKAO_JS_KEY);
-      kakaoReady = Kakao.isInitialized();
-    }
-  } catch(e) { kakaoReady = false; }
-
-  function copyText(text, okMsg){
-    function fallback(){
-      var ta = document.createElement("textarea");
-      ta.value = text; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.opacity="0";
-      document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, 99999);
-      var ok = false; try { ok = document.execCommand("copy"); } catch(e) {}
-      document.body.removeChild(ta);
-      toast(ok ? okMsg : "복사에 실패했어요. 주소창의 링크를 길게 눌러 복사해 주세요.");
-    }
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function(){ toast(okMsg); }).catch(fallback);
-    } else { fallback(); }
+  /* 카카오톡: 휴대폰 공유창에서 카카오톡을 누르면 → 카카오톡의 친구·채팅방 선택 화면이 열립니다.
+     간편조회 링크(kyobo.com)가 메시지에 그대로 들어가 미리보기로 표시됩니다. */
+  function copyFallback(){
+    var ta = document.createElement("textarea");
+    ta.value = MESSAGE; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, 99999);
+    var ok = false; try { ok = document.execCommand("copy"); } catch(e) {}
+    document.body.removeChild(ta);
+    toast(ok ? "이 브라우저는 바로 공유가 안 돼요. 메시지를 복사했으니 카카오톡에 붙여넣어 주세요."
+             : "이 브라우저는 공유를 지원하지 않아요. 휴대폰 기본 브라우저로 열어 주세요.");
   }
-
   document.getElementById("kakaoBtn").addEventListener("click", function(){
-    if (kakaoReady) {
-      try {
-        Kakao.Share.sendDefault({
-          objectType: "text",
-          text: SHARE_TITLE + "\n" + SHARE_TEXT + "\n\n" + SHARE_ASK + fpLine + "\n\n" + SHARE_URL,
-          link: { mobileWebUrl: SHARE_URL, webUrl: SHARE_URL },
-          buttonTitle: "바로가기"
-        });
-        closeSheet();
-        return;
-      } catch(e) {}
+    if (navigator.share) {
+      navigator.share({ text: MESSAGE }).catch(function(err){
+        if (!err || err.name !== "AbortError") copyFallback();
+      });
+    } else {
+      copyFallback();
     }
-    copyText(MESSAGE, "메시지를 복사했어요. 카카오톡 대화방에 붙여넣기 해 주세요.");
-    closeSheet();
   });
-
-  document.getElementById("shareBtn").addEventListener("click", openSheet);
-  document.getElementById("closeBtn").addEventListener("click", closeSheet);
-  document.getElementById("sheetBg").addEventListener("click", closeSheet);
-  document.addEventListener("keydown", function(e){ if (e.key === "Escape") closeSheet(); });
-
-  // 가로 스크롤 진행 절차: 현재 위치 점 표시
-  var flow = document.getElementById("flow");
-  var dots = document.querySelectorAll("#dots span");
-  var items = flow.querySelectorAll(".flow-item");
-  flow.addEventListener("scroll", function(){
-    var idx = 0, best = Infinity, left = flow.getBoundingClientRect().left + 16;
-    for (var i = 0; i < items.length; i++){
-      var d = Math.abs(items[i].getBoundingClientRect().left - left);
-      if (d < best){ best = d; idx = i; }
-    }
-    if (flow.scrollLeft + flow.clientWidth >= flow.scrollWidth - 4) idx = items.length - 1;
-    for (var j = 0; j < dots.length; j++) dots[j].classList.toggle("on", j === idx);
-  }, { passive: true });
 })();
 </script>
 </body>
