@@ -7,6 +7,10 @@
 <meta name="description" content="보험계약자 전용 신용대출 한도, 금리 확인">
 <meta property="og:title" content="교보생명 신용대출 간편조회">
 <meta property="og:description" content="보험계약자 전용 신용대출 한도, 금리 확인">
+<script>
+  /* 카카오톡 메시지의 버튼으로 들어오면(?go=1) 곧바로 교보생명 간편조회 페이지로 이동 */
+  if (/[?&]go=1(&|$)/.test(location.search)) location.replace("https://www.kyobo.com/dgt/web/loan/credit/credit-loan-step1");
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -25,7 +29,7 @@
 
   /* 1. 타이틀 */
   .titlebar{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
-  .title{font-size:24px;font-weight:800;color:var(--primary);line-height:1.25;letter-spacing:-.03em;white-space:nowrap;padding-top:6px}
+  .title{font-size:24px;font-weight:800;color:#081d58;line-height:1.25;letter-spacing:-.03em;white-space:nowrap;padding-top:6px}
   .titlebar .logo{flex:none;height:34px;width:auto;display:block}
 
   /* 2. 부제 */
@@ -151,9 +155,12 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<!-- 카카오 JavaScript SDK (카카오톡 공유) -->
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.8.1/kakao.min.js" crossorigin="anonymous"></script>
 <script>
 (function(){
   /* ===================== 여기만 수정하세요 ===================== */
+  var KAKAO_JS_KEY = "";   // 카카오 디벨로퍼스 JavaScript 키 (넣으면 카카오톡으로만 공유됩니다)
   var FP_NAME = "";        // 추천 FP 이름 (선택, 예: "홍길동")
   var FP_CODE = "";        // 추천 FP 코드 (선택)
   var KYOBO_URL = "https://www.kyobo.com/dgt/web/loan/credit/credit-loan-step1";
@@ -176,25 +183,46 @@
               (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
   document.getElementById("smsBtn").href = (isIOS ? "sms:&body=" : "sms:?body=") + encodeURIComponent(MESSAGE);
 
-  /* 카카오톡: 휴대폰 공유창에서 카카오톡을 누르면 → 카카오톡의 친구·채팅방 선택 화면이 열립니다.
-     간편조회 링크(kyobo.com)가 메시지에 그대로 들어가 미리보기로 표시됩니다. */
+  /* 카카오톡 공유
+     - JavaScript 키가 있으면: 카카오톡이 바로 열리고 친구·채팅방을 골라 보냅니다(다른 앱은 안 나옵니다).
+       메시지의 "한도·금리 조회하기" 버튼 → 이 페이지(?go=1) → 즉시 교보생명 간편조회 페이지로 이동.
+       (카카오 메시지 버튼은 카카오에 등록한 도메인으로만 연결할 수 있어서 이렇게 거쳐 갑니다.)
+     - 키가 없으면: 임시로 휴대폰 공유창을 띄웁니다. */
+  var KAKAO_LINK = location.origin + location.pathname + "?go=1";
+  var kakaoReady = false;
+  try {
+    if (KAKAO_JS_KEY && window.Kakao) {
+      if (!Kakao.isInitialized()) Kakao.init(KAKAO_JS_KEY);
+      kakaoReady = Kakao.isInitialized();
+    }
+  } catch(e) {}
+
   function copyFallback(){
     var ta = document.createElement("textarea");
     ta.value = MESSAGE; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.opacity="0";
     document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, 99999);
     var ok = false; try { ok = document.execCommand("copy"); } catch(e) {}
     document.body.removeChild(ta);
-    toast(ok ? "이 브라우저는 바로 공유가 안 돼요. 메시지를 복사했으니 카카오톡에 붙여넣어 주세요."
-             : "이 브라우저는 공유를 지원하지 않아요. 휴대폰 기본 브라우저로 열어 주세요.");
+    toast(ok ? "메시지를 복사했어요. 카카오톡에 붙여넣어 주세요." : "휴대폰 기본 브라우저로 열어 주세요.");
   }
+
   document.getElementById("kakaoBtn").addEventListener("click", function(){
+    if (kakaoReady) {
+      try {
+        Kakao.Share.sendDefault({
+          objectType: "text",
+          text: SHARE_TITLE + "\n" + SHARE_TEXT + "\n\n" + SHARE_ASK + fpLine,
+          link: { mobileWebUrl: KAKAO_LINK, webUrl: KAKAO_LINK },
+          buttonTitle: "한도·금리 조회하기"
+        });
+      } catch(e) { toast("카카오톡을 열지 못했어요. 잠시 후 다시 시도해 주세요."); }
+      return;
+    }
     if (navigator.share) {
       navigator.share({ text: MESSAGE }).catch(function(err){
         if (!err || err.name !== "AbortError") copyFallback();
       });
-    } else {
-      copyFallback();
-    }
+    } else { copyFallback(); }
   });
 })();
 </script>
